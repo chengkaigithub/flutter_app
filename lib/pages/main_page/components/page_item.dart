@@ -4,7 +4,8 @@ class PageItem extends StatelessWidget {
 
   static const Divider lineFull = Divider(height: 1.0);
   static const Divider lineHalf = Divider(indent: 50, height: 1.0);
-  static const Padding paddingTop = Padding(padding: EdgeInsets.only(top: 15.0));
+  static const Padding paddingTop = Padding(
+    padding: EdgeInsets.only(top: 15.0));
 
   static getImageAsset(String imgPath) =>
     Image.asset(imgPath, width: 30.0, height: 30.0);
@@ -45,7 +46,10 @@ class PageItem extends StatelessWidget {
         ),
       ),
       highlightColor: Colors.black12,
-      onTap: () => _onItemClick()
+      onTap: () {
+        Navigator.pop(context);
+        _onItemClick();
+      }
     );
   }
 
