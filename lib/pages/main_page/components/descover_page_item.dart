@@ -9,11 +9,11 @@ class PageItem extends StatelessWidget {
   static getImageAsset(String imgPath) =>
     Image.asset(imgPath, width: 30.0, height: 30.0);
 
-  final String title;
-  final Function onItemClick;
-  final leftIcon;
+  final String _title;
+  final Function _onItemClick;
+  final _leftIcon;
 
-  PageItem(this.leftIcon, this.title, this.onItemClick);
+  PageItem(this._leftIcon, this._title, this._onItemClick);
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,9 @@ class PageItem extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
-              child: leftIcon,
+              child: _leftIcon,
             ),
-            Text(title, style: TextStyle(fontSize: 16.0),),
+            Text(_title, style: TextStyle(fontSize: 16.0),),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -45,7 +45,7 @@ class PageItem extends StatelessWidget {
         ),
       ),
       highlightColor: Colors.black12,
-      onTap: () => onItemClick()
+      onTap: () => _onItemClick()
     );
   }
 

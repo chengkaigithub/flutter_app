@@ -14,7 +14,7 @@ class MyPage extends StatefulWidget {
 
 class MyPageState extends State<MyPage> {
 
-  GestureDetector headerWidget = GestureDetector(
+  GestureDetector _headerWidget = GestureDetector(
     child: Container(
       height: 200.0,
       decoration: BoxDecoration(
@@ -44,7 +44,7 @@ class MyPageState extends State<MyPage> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        headerWidget,
+        _headerWidget,
         PageItem.lineFull,
         PageItem(
           PageItem.getImageAsset('images/ic_my_message.png'),
