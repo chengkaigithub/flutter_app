@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/main_page/DrawerPage.dart';
+import 'package:flutter_app/pages/main_page/drawer_page/drawer_page.dart';
 import 'configs/colors_config.dart';
-import './pages/main_page/main_pages.dart';
+import 'pages/main_page/main_pages.dart';
 import 'configs/tabbar_config.dart';
+import 'pages/routers.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: '开源China',
       theme: ThemeData(
-//        primarySwatch: Colors.red,
         primaryColor: ColorConfig.primaryColor
       ),
       home: Home(title: 'Flutter Demo Home Page'),
+      routes: routers,
     );
   }
 }

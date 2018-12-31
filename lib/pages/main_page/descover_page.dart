@@ -1,7 +1,7 @@
 /// 发现界面
 import 'package:flutter/material.dart';
 import 'package:flutter_app/configs/string_config.dart';
-import 'components/descover_page_item.dart';
+import 'components/page_item.dart';
 
 class DescoverPage extends StatefulWidget {
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/configs/string_config.dart';
-import 'package:flutter_app/pages/main_page/components/descover_page_item.dart';
+import 'package:flutter_app/pages/main_page/components/page_item.dart';
+import 'package:flutter_app/pages/routers.dart';
 
 class DrawerPage extends StatelessWidget {
   @override
@@ -17,25 +18,25 @@ class DrawerPage extends StatelessWidget {
           PageItem(
             PageItem.getImageAsset('images/leftmenu/ic_fabu.png'),
             StringConstants.SEND_MOVE_BOMB,
-              () => print('发布动弹')
+              () => Navigator.pushNamed(context, Routers.PUBLISH_TWEET_PAGE)
           ),
           PageItem.lineFull,
           PageItem(
             PageItem.getImageAsset('images/leftmenu/ic_xiaoheiwu.png'),
             StringConstants.MOVE_BOMB_BLACK_HOUSE,
-              () => print('东单小黑屋')
+              () => Navigator.pushNamed(context, Routers.DARKHOUSE_PAGE)
           ),
           PageItem.lineFull,
           PageItem(
             PageItem.getImageAsset('images/leftmenu/ic_about.png'),
             StringConstants.ABOUT,
-              () => print('关于')
+              () => Navigator.pushNamed(context, Routers.ABOUT_PAGE)
           ),
           PageItem.lineFull,
           PageItem(
             PageItem.getImageAsset('images/leftmenu/ic_settings.png'),
             StringConstants.SETTING,
-              () => print('设置')
+              () => Navigator.pushNamed(context, Routers.SETTING_PAGE)
           ),
           PageItem.lineFull,
         ],
