@@ -62,6 +62,6 @@ Widget bottomNavigationBars(
     currentIndex: currentTabIndex,
     type: BottomNavigationBarType.shifting,
     items: generateItems(),
-    onTap: onTabbarClick,
+    onTap: (index) => onTabbarClick(index, TAB_TITLES[index]),
   );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/configs/string_config.dart';
 import 'package:flutter_app/pages/main_page/drawer_page/drawer_page.dart';
 import 'configs/colors_config.dart';
 import 'pages/main_page/main_pages.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: ColorConfig.primaryColor
       ),
-      home: Home(title: 'Flutter Demo Home Page'),
+      home: Home(),
       routes: routers,
     );
   }
@@ -24,23 +25,21 @@ class MyApp extends StatelessWidget {
 
 class Home extends StatefulWidget {
 
-  final String title;
-
-  Home({Key key, this.title}) : super(key: key);
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
 
-  int _currentTabIndex = 0;
+  int _currentTabIndex = 1;
+  String _currentTitle = StringConstants.NEWS;
 
-  final _bodys = [NewsPage(), MoveBomb(), DescoverPage(), MyPage()];
+  final _bodys = <Widget>[NewsPage(), MoveBomb(), DescoverPage(), MyPage()];
 
-  onTabbarClick(currentIndex) {
+  onTabbarClick(currentIndex, currentTitle) {
     setState(() {
       this._currentTabIndex = currentIndex;
+      this._currentTitle = currentTitle;
     });
   }
 
@@ -48,7 +47,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(_currentTitle),
         centerTitle: true,
       ),
       drawer: DrawerPage(),
@@ -56,7 +55,10 @@ class _HomeState extends State<Home> {
         currentTabIndex: _currentTabIndex,
         onTabbarClick: onTabbarClick
       ),
-      body: _bodys[_currentTabIndex],
+      body: IndexedStack(
+        children: _bodys,
+        index: _currentTabIndex,
+      )
     );
   }
 }
