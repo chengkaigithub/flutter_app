@@ -46,28 +46,39 @@ class SlideViewState extends State<SlideView>
           padding: EdgeInsets.only(top: 5.0),
           child: Stack(
             children: <Widget>[
-              Image.network(
-                slideData != null ? slideData[index]['imgUrl'] : '',
-                fit: BoxFit.fitHeight,
-                height: 188.0,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(6.0),
+                child: Image.network(
+                  slideData != null ? slideData[index]['imgUrl'] : '',
+                  fit: BoxFit.fitHeight,
+                  height: 188.0,
+                ),
               ),
-              Container(
-                width: screenWidth,
-                color: Color(0x50000000),
-                child: Padding(
-                  padding: EdgeInsets.all(6.0),
-                  child: Container(
-                    height: 18.0,
-                    child: Center(
-                      child: Text(
-                        slideData != null ? slideData[index]['title'] : '',
-                        style: TextStyle(color: Colors.white, fontSize: 14.0),
-                        softWrap: false,
+              new Material(
+                child: Container(
+                  width: screenWidth,
+                  color: Colors.transparent,
+                  child: Padding(
+                    padding: EdgeInsets.all(6.0),
+                    child: Container(
+                      height: 18.0,
+                      child: Center(
+                        child: Text(
+                          slideData != null ? slideData[index]['title'] : '',
+                          style: TextStyle(color: Colors.white, fontSize: 14.0),
+                          softWrap: false,
+                          overflow: TextOverflow.ellipsis
+                        ),
                       ),
                     ),
                   ),
                 ),
-              )
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(6.0),
+                  bottom: Radius.circular(0.0)
+                ),
+                color: Color(0x20000000),
+              ),
             ],
           )
         );
@@ -76,6 +87,7 @@ class SlideViewState extends State<SlideView>
       viewportFraction: 0.8,
       scale: 0.8,
       autoplay: true,
+      duration: 1500,
       onTap: (index) {
         Navigator.of(context).push(
           MaterialPageRoute(

@@ -160,6 +160,8 @@ class MyPageState extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      shrinkWrap: true,
+      padding: EdgeInsets.only(),
       children: [
         _headerWidget(),
         PageItem.lineFull,

@@ -43,13 +43,21 @@ class _HomeState extends State<Home> {
     });
   }
 
+  renderAppBar() {
+    if (_currentTabIndex == 3) {
+      return null;
+    } else {
+      return AppBar(
+        title: Text(_currentTitle),
+        centerTitle: true,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_currentTitle),
-        centerTitle: true,
-      ),
+      appBar: renderAppBar(),
       drawer: DrawerPage(),
       bottomNavigationBar: bottomNavigationBars(
         currentTabIndex: _currentTabIndex,

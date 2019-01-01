@@ -7,11 +7,13 @@ class DrawerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height,
       width: 270.0,
       decoration: BoxDecoration(
         color: Colors.white
       ),
       child: ListView(
+        shrinkWrap: true,
         padding: EdgeInsets.only(),
         children: <Widget>[
           Image.asset('images/cover_img.jpg', width: 270.0, height: 270.0,),
