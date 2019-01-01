@@ -43,7 +43,7 @@ class SlideViewState extends State<SlideView>
     return new Swiper(
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 1.0),
+          padding: EdgeInsets.only(top: 5.0),
           child: Stack(
             children: <Widget>[
               Image.network(
