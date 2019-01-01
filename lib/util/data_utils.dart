@@ -1,6 +1,6 @@
+import 'package:flutter_app/model/user_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
-import '../model/user_info.dart';
 
 class DataUtils {
   static final String SP_AC_TOKEN = "accessToken";

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/api/api_constants.dart';
 import 'package:flutter_app/configs/string_config.dart';
+import 'package:flutter_app/util/data_utils.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:convert';
-
-import '../api/api_constants.dart';
-import '../util/data_utils.dart';
 
 import 'dart:async';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/configs/string_config.dart';
-import 'package:flutter_app/pages/main_page/components/page_item.dart';
+import 'package:flutter_app/pages/main_page/widgets/page_item.dart';
 
 class SettingPage extends StatelessWidget {
 

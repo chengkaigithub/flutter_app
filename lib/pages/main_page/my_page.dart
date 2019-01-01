@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/api/api.dart';
 import 'package:flutter_app/api/api_constants.dart';
+import 'package:flutter_app/configs/colors_config.dart';
 import 'package:flutter_app/configs/string_config.dart';
 import 'package:flutter_app/events/login_event.dart';
 import 'package:flutter_app/events/logout_event.dart';
@@ -12,8 +13,7 @@ import 'package:flutter_app/pages/common_page/CommonWebPage.dart';
 import 'package:flutter_app/pages/routers.dart';
 import 'package:flutter_app/util/data_utils.dart';
 import 'package:flutter_app/util/net_utils.dart';
-import '../../configs/colors_config.dart';
-import 'components/page_item.dart';
+import 'package:flutter_app/pages/main_page/widgets/page_item.dart';
 
 class MyPage extends StatefulWidget {
 
