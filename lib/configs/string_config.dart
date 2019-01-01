@@ -13,6 +13,7 @@ class StringConstants {
 
   static const String SWITCH_THEME = '切换主题';
   static const String LOGIN_OUT = '退出登录';
+  static const String LOGIN = '登录';
 
   static const String CLICK_HEADER_LOGIN = '点击头像登录';
   static const String MY_MESSAGE = '我的消息';
@@ -51,4 +52,6 @@ class StringConstants {
   static const String LOGIN_OBS = '登入开源中国';
   static const String LISTVIEW_FOOTER_BOTTOM = '我也是有底线的';
   static const String NEWS_DETAIL = '资讯详情';
+
+  static const String MOVE_BOMB_LOGIN_INFO = '由于OSC的openapi限制\n必须登录后才能获取动弹信息';
 }
