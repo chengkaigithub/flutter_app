@@ -39,60 +39,60 @@ class NewsPageState extends State<NewsPage> {
   }
 
   //获取新闻列表，isLoadMore表示是否加载更多数据
-  getNewsList(bool isLoadMore) {
-    if (isLoading) return;
-    isLoading = true;
-    curPage = isLoadMore ? curPage++ : 1;
-    String url = Api.NEWS_LIST;
-    url += '?pageIndex=$curPage&pageSize=10';
-    //http://osc.yubo725.top/news/list?pageIndex=2&pageSize=10
-    print('newsListUrl = $url');
-    NetUtils.get(url).then((data) {
-      if (data != null) {
-        Map<String, dynamic> map = json.decode(data);
-        if (map['code'] == 0) {
-          var msg = map['msg'];
-          //总的资讯条数
-          listTotalSize = msg['news']['total'];
-          //data数据内容
-          var _listData = msg['news']['data'];
-          var _slideData = msg['slide'];
+  Future<Null> getNewsList(bool isLoadMore) async {
+    if (!isLoading) {
+      isLoading = true;
+      curPage = isLoadMore ? curPage++ : 1;
+      String url = Api.NEWS_LIST;
+      url += '?pageIndex=$curPage&pageSize=10';
+      //http://osc.yubo725.top/news/list?pageIndex=2&pageSize=10
+      await NetUtils.get(url).then((data) {
+        if (data != null) {
+          Map<String, dynamic> map = json.decode(data);
+          if (map['code'] == 0) {
+            var msg = map['msg'];
+            //总的资讯条数
+            listTotalSize = msg['news']['total'];
+            //data数据内容
+            var _listData = msg['news']['data'];
+            var _slideData = msg['slide'];
 
-          setState(() {
-            if (!isLoadMore) {
-              //不是加载更多，则直接赋值
-              listData = _listData;
-            } else {
-              //加载更多
-              List list = new List();
-              list.addAll(listData);
-              list.addAll(_listData);
+            setState(() {
+              if (!isLoadMore) {
+                //不是加载更多，则直接赋值
+                listData = _listData;
+              } else {
+                //加载更多
+                List list = new List();
+                list.addAll(listData);
+                list.addAll(_listData);
 
-              //加载完了所有数据
-              if (list.length >= listTotalSize) {
-                list.add(Constants.END_LINE_TAG);
+                //加载完了所有数据
+                if (list.length >= listTotalSize) {
+                  list.add(Constants.END_LINE_TAG);
+                }
+
+                listData = list;
               }
-
-              listData = list;
-            }
-            slideData = _slideData;
-          });
+              slideData = _slideData;
+            });
+          }
         }
-      }
-      isLoading = false;
-    });
+        isLoading = false;
+      });
+      return null;
+    }
   }
 
   //下拉刷新
-  Future<Null> _pullToRefresh() async {
-    getNewsList(false);
-    return null;
+  Future<Null> _pullToRefresh() {
+    return getNewsList(false);
   }
 
 
   Widget buildProgress() {
     return Padding(
-      padding: EdgeInsets.all(12.0),
+      padding: EdgeInsets.all(10.0),
       child: Center(
         child: CircularProgressIndicator(),
       ),
