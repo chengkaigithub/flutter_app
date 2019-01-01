@@ -47,4 +47,6 @@ class StringConstants {
 
   static const String PUBLISH_SUCCESS = '发布成功';
   static const String PUBLISH_FAILURE = '发布成功';
+
+  static const String LOGIN_OBS = '登入开源中国';
 }

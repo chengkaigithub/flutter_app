@@ -18,25 +18,29 @@ class DrawerPage extends StatelessWidget {
           PageItem(
             PageItem.getImageAsset('images/leftmenu/ic_fabu.png'),
             StringConstants.SEND_MOVE_BOMB,
-              () => Navigator.pushNamed(context, Routers.PUBLISH_TWEET_PAGE)
+              () => Navigator.pushNamed(context, Routers.PUBLISH_TWEET_PAGE),
+            isPopDrawer: true
           ),
           PageItem.lineFull,
           PageItem(
             PageItem.getImageAsset('images/leftmenu/ic_xiaoheiwu.png'),
             StringConstants.MOVE_BOMB_BLACK_HOUSE,
-              () => Navigator.pushNamed(context, Routers.DARKHOUSE_PAGE)
+              () => Navigator.pushNamed(context, Routers.DARKHOUSE_PAGE),
+            isPopDrawer: true
           ),
           PageItem.lineFull,
           PageItem(
             PageItem.getImageAsset('images/leftmenu/ic_about.png'),
             StringConstants.ABOUT,
-              () => Navigator.pushNamed(context, Routers.ABOUT_PAGE)
+              () => Navigator.pushNamed(context, Routers.ABOUT_PAGE),
+            isPopDrawer: true
           ),
           PageItem.lineFull,
           PageItem(
             PageItem.getImageAsset('images/leftmenu/ic_settings.png'),
             StringConstants.SETTING,
-              () => Navigator.pushNamed(context, Routers.SETTING_PAGE)
+              () => Navigator.pushNamed(context, Routers.SETTING_PAGE),
+            isPopDrawer: true
           ),
           PageItem.lineFull,
         ],

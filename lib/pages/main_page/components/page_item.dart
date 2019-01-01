@@ -13,8 +13,10 @@ class PageItem extends StatelessWidget {
   final String _title;
   final Function _onItemClick;
   final _leftIcon;
+  final isPopDrawer;
 
-  PageItem(this._leftIcon, this._title, this._onItemClick);
+  PageItem(this._leftIcon, this._title, this._onItemClick, {isPopDrawer: false})
+    : this.isPopDrawer = isPopDrawer;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class PageItem extends StatelessWidget {
       ),
       highlightColor: Colors.black12,
       onTap: () {
-        Navigator.pop(context);
+        if (isPopDrawer) Navigator.pop(context);
         _onItemClick();
       }
     );

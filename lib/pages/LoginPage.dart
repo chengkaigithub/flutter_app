@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/configs/string_config.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:convert';
@@ -20,10 +21,10 @@ class LoginPageState extends State<LoginPage> {
   int count = 0;
   static const int MAX_COUNT = 5;
 
-  //url变化监听器
+  // url变化监听器
   StreamSubscription<String> _onUrlChanged;
 
-  //插件提供的对象，该对象用域webview的各种操作
+  // 插件提供的对象，该对象用于webview的各种操作
   FlutterWebviewPlugin flutterWebviewPlugin = new FlutterWebviewPlugin();
 
   @override
@@ -43,15 +44,26 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
-    // Every listener should be canceled, the same should be done with this stream.
     _onUrlChanged.cancel();
-
     flutterWebviewPlugin.dispose();
-
     super.dispose();
   }
 
-  //解析webview中的数据
+  renderTitleConten() {
+    //添加appbar的title内容
+    List<Widget> titleContent = [];
+    titleContent.add(Text(
+      StringConstants.LOGIN_OBS,
+      style: TextStyle(color: Colors.white),
+    ));
+    if (loading) {
+      titleContent.add(CupertinoActivityIndicator());
+    }
+    titleContent.add(Container(width: 50.0));
+    return titleContent;
+  }
+
+  // 解析webview中的数据
   pareResult() {
     if (count > MAX_COUNT) {
       return;
@@ -67,16 +79,16 @@ class LoginPageState extends State<LoginPage> {
         try {
           var map = json.decode(result);
           //{"access_token":"616255f1-37ce-4229-a512-8a2a46e1215c","refresh_token":"0adb0b05-db51-4d01-939c-9771035ad2b1","uid":4049886,"token_type":"bearer","expires_in":242028}
-          print("map1 = $map");
+          print("json.decode1 => $map");
           if (map is String) {
             map = json.decode(map);
             //{access_token: 616255f1-37ce-4229-a512-8a2a46e1215c, refresh_token: 0adb0b05-db51-4d01-939c-9771035ad2b1, uid: 4049886, token_type: bearer, expires_in: 242028}
-            print("map2 = $map");
+            print("json.decode2 => $map");
           }
           if (map != null) {
-            //登入成功了，保存token等信息
+            // 登入成功了, 保存token等信息
             DataUtils.saveLoginInfo(map);
-            //弹出当前路由
+            // 弹出当前路由, 回调上层界面
             Navigator.pop(context, 'refresh');
           }
         } catch (e) {
@@ -90,26 +102,13 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    //添加appbar的title内容
-    List<Widget> titleContent = [];
-    titleContent.add(Text(
-      "登入开源中国",
-      style: TextStyle(color: Colors.white),
-    ));
-    if (loading) {
-      titleContent.add(CupertinoActivityIndicator());
-    }
-    titleContent.add(Container(
-      width: 50.0,
-    ));
-
     //渲染一个WebView
     return new WebviewScaffold(
       url: Constants.LOGIN_URL,
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: titleContent,
+          children: renderTitleConten(),
         ),
         iconTheme: IconThemeData(color: Colors.white),
       ),
