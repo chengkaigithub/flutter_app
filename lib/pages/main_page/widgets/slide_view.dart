@@ -26,7 +26,7 @@ class SlideViewState extends State<SlideView> {
     return new Swiper(
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: EdgeInsets.only(top: 10.0),
+          padding: EdgeInsets.only(top: 7.0),
           child: Stack(
             children: <Widget>[
               ClipRRect(
