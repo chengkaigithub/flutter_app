@@ -16,14 +16,30 @@ class SlideView extends StatefulWidget {
 
 class SlideViewState extends State<SlideView> {
   List slideData;
+  bool isDeactivate = false;
+  SwiperController _controller;
 
   SlideViewState(this.slideData);
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = new SwiperController();
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    isDeactivate ? _controller.startAutoplay() : _controller.stopAutoplay();
+    isDeactivate = !isDeactivate;
+  }
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return new Swiper(
+      controller: _controller,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
           padding: EdgeInsets.only(top: 7.0),
