@@ -14,27 +14,10 @@ class SlideView extends StatefulWidget {
   }
 }
 
-class SlideViewState extends State<SlideView>
-  with SingleTickerProviderStateMixin {
+class SlideViewState extends State<SlideView> {
   List slideData;
-  TabController tabController;
 
   SlideViewState(this.slideData);
-
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(
-      length: slideData == null ? 0 : slideData.length,
-      vsync: this,
-    );
-  }
-
-  @override
-  void dispose() {
-    tabController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
